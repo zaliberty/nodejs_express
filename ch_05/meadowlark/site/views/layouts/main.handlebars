@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    {{#if showTests}}
+        <link rel="stylesheet" href="/vendor/mocha.css">
+    {{/if}}
+    <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
     <style>
         img {
             width: 30%;
@@ -14,7 +18,22 @@
 </head>
 <body>
     <header><img src="/img/logo.jpg" alt="Логотип Meadowlark Travel"></header>
-    <header><img src="/img/logo.jpg" alt="Логотип Meadowlark Travel"></header>
     {{{body}}}
+    <h3>showTests: {{showTests}}</h3>
+    {{#if showTests}}
+    <div id="mocha"></div>
+        <script src="/vendor/mocha.js"></script>
+        <script src="/vendor/chai.js"></script>
+        <script>
+            mocha.ui('tdd');
+            var assert = chai.assert;
+        </script>
+        <script src="/qa/tests-global.js"></script>
+        {{#if pageTestScript}}
+            <script src="{{pageTestScript}}"></script>
+        {{/if}}
+        <script>mocha.run();</script>
+    {{/if}}
+
 </body>
 </html>
