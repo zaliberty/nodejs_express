@@ -8,6 +8,7 @@
     {{#if showTests}}
         <link rel="stylesheet" href="/vendor/mocha.css">
     {{/if}}
+    {{{_sections.head}}}
     <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
     <style>
         img {
@@ -34,6 +35,9 @@
         {{/if}}
         <script>mocha.run();</script>
     {{/if}}
+
+    {{{_sections.script}}}
+    {{{_sections.jquery}}}
 
 </body>
 </html>
